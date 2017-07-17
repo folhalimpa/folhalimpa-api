@@ -59,4 +59,13 @@ class PagamentoPorServidor(mixins.ListModelMixin, viewsets.GenericViewSet):
 
     def get_queryset(self):
         servidor_id = self.kwargs.get(self.lookup_url_kwarg)
-        return FolhaMunicipio.objects.filter(id_servidor=servidor_id)
+        return FolhaMunicipio.objects.filter(id_servidor=servidor_id).order_by("-valor")
+
+
+class PagamentoPorUnidadeGestora(mixins.ListModelMixin, viewsets.GenericViewSet):
+    serializer_class = serializers.FolhaMunicipioSerializer
+    lookup_url_kwarg = "unidade_id"
+
+    def get_queryset(self):
+        unidade_id = self.kwargs.get(self.lookup_url_kwarg)
+        return FolhaMunicipio.objects.filter(id_unidade_gestora=unidade_id).order_by("-valor")

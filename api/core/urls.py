@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
 
-from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet, FolhaMunicipioViewSet, PagamentoPorServidor
+from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet, FolhaMunicipioViewSet, PagamentoPorServidor, PagamentoPorUnidadeGestora
 
 
 router = routers.DefaultRouter()
@@ -29,6 +29,6 @@ router.register(r'folhas', FolhaMunicipioViewSet, base_name='folhas')
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^pagamentos/(?P<servidor_id>[0-9]+)$', PagamentoPorServidor.as_view({
-        'get': 'list'})),
+    url(r'^pagamentos/servidor/(?P<servidor_id>[0-9]+)$', PagamentoPorServidor.as_view({'get': 'list'})),
+    url(r'^pagamentos/unidade/(?P<unidade_id>[0-9]+)$', PagamentoPorUnidadeGestora.as_view({'get': 'list'})),
 ]
