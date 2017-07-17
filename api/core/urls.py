@@ -13,7 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from pagamentos.views import PagamentoViewSet
+from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet
 from django.conf.urls import include, url
 from django.contrib import admin
 
@@ -22,6 +22,8 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'pagamentos', PagamentoViewSet, base_name='pagamentos')
+router.register(r'servidores', ServidorViewSet, base_name='servidores')
+router.register(r'unidadesgestoras', UnidadeGestoraMunicipioViewSet, base_name='unidadesgestoras')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
