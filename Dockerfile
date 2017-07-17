@@ -7,3 +7,5 @@ RUN apt-get update \
  && apt-get install -y --allow-unauthenticated python3.6 python3-pip
 
 COPY . /fl-api
+
+RUN pip3 install -r /fl-api/requirements.txt
