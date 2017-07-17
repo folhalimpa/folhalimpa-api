@@ -102,6 +102,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
+
 # load local settings
 try:
     from .localsettings import *
