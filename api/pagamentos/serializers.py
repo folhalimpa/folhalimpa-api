@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pagamentos.models import Servidor, UnidadeGestoraMunicipio
+from pagamentos.models import Servidor, UnidadeGestoraMunicipio, FolhaMunicipio
 
 
 class PagamentoSerializer(serializers.Serializer):
@@ -24,3 +24,9 @@ class UnidadeGestoraMunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = UnidadeGestoraMunicipio
         fields = ('id', 'nome', 'codigo')
+
+
+class FolhaMunicipioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FolhaMunicipio
+        fields = ('id_servidor', 'id_unidade_gestora', 'valor')

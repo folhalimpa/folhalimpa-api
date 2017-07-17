@@ -30,3 +30,17 @@ class UnidadeGestoraMunicipio(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class FolhaMunicipio(models.Model):
+    id_servidor = models.IntegerField()
+    id_cargo = models.IntegerField()
+    id_vinculo = models.IntegerField()
+    id_unidade_gestora = models.IntegerField()
+    id_unidade_orcamentaria = models.IntegerField()
+    data_pagamento = models.DateField()
+    valor = models.DecimalField(max_digits=11, decimal_places=2)
+
+    class Meta:
+        managed = False
+        db_table = 'folhas_municipios'
