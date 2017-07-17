@@ -9,3 +9,9 @@ RUN apt-get update \
 COPY . /fl-api
 
 RUN pip3 install -r /fl-api/requirements.txt
+
+EXPOSE 8000
+
+WORKDIR /fl-api
+
+CMD python3 api/manage.py runserver 0.0.0.0:8000
