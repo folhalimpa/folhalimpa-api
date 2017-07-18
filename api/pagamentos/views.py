@@ -93,4 +93,3 @@ class PagamentoPorUnidadeGestora(mixins.ListModelMixin, viewsets.GenericViewSet)
 
         return FolhaMunicipio.objects.filter(id_unidade_gestora=unidade_id).order_by("-valor")
 
-
