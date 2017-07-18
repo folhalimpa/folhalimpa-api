@@ -6,9 +6,11 @@ RUN echo "deb http://ftp.de.debian.org/debian experimental main\n" >> /etc/apt/s
 RUN apt-get update \
  && apt-get install -y --allow-unauthenticated python3.6 python3-pip
 
-COPY . /fl-api
+COPY requirements.txt requirements.txt
 
-RUN pip3 install -r /fl-api/requirements.txt
+RUN pip3 install -r requirements.txt
+
+COPY . /fl-api
 
 EXPOSE 8000
 
