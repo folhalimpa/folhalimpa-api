@@ -4,7 +4,7 @@ RUN echo "deb http://ftp.de.debian.org/debian experimental main\n" >> /etc/apt/s
  && echo "deb http://ftp.de.debian.org/debian unstable main\n" >> /etc/apt/sources.list
 
 RUN apt-get update \
- && apt-get install -y --allow-unauthenticated python3.6 python3-pip
+ && apt-get install -y --allow-unauthenticated python3.6 python3-pip python-mysqldb libmysqlclient-dev
 
 COPY requirements.txt requirements.txt
 
