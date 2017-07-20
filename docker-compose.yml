@@ -1,11 +1,13 @@
 version: '3'
 
 services:
+  db:
+    image: fl-db
   api:
     image: fl-api
     build: .
     ports:
-      - 8000:8000
-  db:
-    image: fl-db
+      - "8000:8000"
+    depends_on:
+      - db
 
