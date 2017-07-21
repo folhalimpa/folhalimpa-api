@@ -10,4 +10,8 @@ services:
       - "8000:8000"
     depends_on:
       - db
+  client:
+      image: fl-client
+      ports:
+        - "80:80"
 
