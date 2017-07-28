@@ -20,8 +20,6 @@ from rest_framework import routers
 
 from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet, FolhaMunicipioViewSet, PagamentoPorServidor, PagamentoPorUnidadeGestora, PagamentoUnidadeGestoraInfo, PagamentoServidorInfo
 
-
-
 router = routers.DefaultRouter()
 router.register(r'pagamentos', PagamentoViewSet, base_name='pagamentos')
 router.register(r'servidores', ServidorViewSet, base_name='servidores')
@@ -37,8 +35,3 @@ urlpatterns = [
     url(r'^pagamentos_info/servidor/(?P<servidor_id>[0-9]+)$', PagamentoServidorInfo.as_view())
 ]
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
