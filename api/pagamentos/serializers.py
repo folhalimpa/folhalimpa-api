@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pagamentos.models import Servidor, UnidadeGestoraMunicipio, FolhaMunicipio
+from pagamentos.models import Servidor, UnidadeGestoraMunicipio, FolhaMunicipio, CargoMunicipio
 
 
 class PagamentoSerializer(serializers.Serializer):
@@ -17,7 +17,7 @@ class PagamentoSerializer(serializers.Serializer):
 class ServidorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Servidor
-        fields = ('id', 'nome', 'cpf')
+        fields = ('id', 'nome')
 
 
 class UnidadeGestoraMunicipioSerializer(serializers.ModelSerializer):
@@ -27,6 +27,19 @@ class UnidadeGestoraMunicipioSerializer(serializers.ModelSerializer):
 
 
 class FolhaMunicipioSerializer(serializers.ModelSerializer):
+    nome_servidor = serializers.SerializerMethodField()
+    nome_unidade = serializers.SerializerMethodField()
+    cargo = serializers.SerializerMethodField()
+
+    def get_nome_servidor(self, obj):
+        return Servidor.objects.get(pk=obj.id_servidor).nome
+
+    def get_nome_unidade(self, obj):
+        return UnidadeGestoraMunicipio.objects.get(pk=obj.id_unidade_gestora).nome
+
+    def get_cargo(self, obj):
+        return CargoMunicipio.objects.get(pk=obj.id_cargo).nome
+
     class Meta:
         model = FolhaMunicipio
-        fields = ('id_servidor', 'id_unidade_gestora', 'valor')
+        fields = ('id_servidor', 'id_unidade_gestora', 'valor', 'nome_servidor', 'nome_unidade', 'cargo', 'data_pagamento')

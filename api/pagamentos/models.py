@@ -32,6 +32,21 @@ class UnidadeGestoraMunicipio(models.Model):
         return self.nome
 
 
+class VinculoMunicipio(models.Model):
+    nome = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'vinculos_municipios'
+
+class CargoMunicipio(models.Model):
+    nome = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'cargos_municipios'
+
+
 class FolhaMunicipio(models.Model):
     id_servidor = models.IntegerField()
     id_cargo = models.IntegerField()

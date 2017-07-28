@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
+from django.conf import settings
 from django.contrib import admin
 from rest_framework import routers
 
-from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet, FolhaMunicipioViewSet, PagamentoPorServidor, PagamentoPorUnidadeGestora
+from pagamentos.views import PagamentoViewSet, ServidorViewSet, UnidadeGestoraMunicipioViewSet, FolhaMunicipioViewSet, PagamentoPorServidor, PagamentoPorUnidadeGestora, PagamentoUnidadeGestoraInfo, PagamentoServidorInfo
+
 
 
 router = routers.DefaultRouter()
@@ -31,4 +33,12 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pagamentos/servidor/(?P<servidor_id>[0-9]+)$', PagamentoPorServidor.as_view({'get': 'list'})),
     url(r'^pagamentos/unidade/(?P<unidade_id>[0-9]+)$', PagamentoPorUnidadeGestora.as_view({'get': 'list'})),
+    url(r'^pagamentos_info/unidade/(?P<unidade_id>[0-9]+)$', PagamentoUnidadeGestoraInfo.as_view()),
+    url(r'^pagamentos_info/servidor/(?P<servidor_id>[0-9]+)$', PagamentoServidorInfo.as_view())
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
