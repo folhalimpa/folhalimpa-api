@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'cachalot',
     'pagamentos',
 )
 
@@ -113,18 +114,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'pagamentos.pagination.CustomPagination',
 }
 
-# CORS
-CORS_ORIGIN_WHITELIST = (
-    '67.205.178.77',
-    'localhost:8001',
-    '127.0.0.1:8001'
-)
-
 # CACHE
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'folhalimpa_cache_table'
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
 
