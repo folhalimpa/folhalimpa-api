@@ -43,3 +43,9 @@ class FolhaMunicipioSerializer(serializers.ModelSerializer):
     class Meta:
         model = FolhaMunicipio
         fields = ('id_servidor', 'id_unidade_gestora', 'valor', 'nome_servidor', 'nome_unidade', 'cargo', 'data_pagamento')
+
+class FolhaMunicipioSerializerCSV(FolhaMunicipioSerializer):
+    class Meta:
+        model = FolhaMunicipio
+        fields = ('valor', 'nome_servidor', 'nome_unidade', 'cargo', 'data_pagamento')
+
