@@ -37,7 +37,7 @@ class ServidorViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 class UnidadeGestoraMunicipioViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    queryset = UnidadeGestoraMunicipio.objects.all()
+    queryset = UnidadeGestoraMunicipio.objects.all().order_by("nome")
     serializer_class = serializers.UnidadeGestoraMunicipioSerializer
 
     def retrieve(self, request, pk=None):
