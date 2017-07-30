@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'folha_limpa',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'REDEFINIR',
+        'PASSWORD': 'REDEFINIR',
         'HOST': 'db',
         'PORT': '3306'
     }
