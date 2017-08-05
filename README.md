@@ -1,4 +1,10 @@
-# folhalimpa-api
+# Folha Limpa API
+
+Folha Limpa é um projeto do Hackfest 2017 que tem como objetivo exibir visualizações de anomalias nas folhas de pagamento do estado e dos municípios da Paraíba.
+
+O Folha Limpa pode ser acessado no endereço: [folhalimpa.org](http://folhalimpa.org/).
+
+## Como executar localmente
 
 Para que os passos descritos aqui funcionem, é preciso ter construído a imagem do banco de dados anteriormente. Veja [aqui](https://github.com/folhalimpa/folhalimpa-db) como criar a imagem do banco de dados.
 
